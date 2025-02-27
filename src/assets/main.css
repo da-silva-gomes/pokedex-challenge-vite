@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-dragon: #735fdc;
+  --color-dragon-hover: #604acf;
+  --color-fighting: #80351d;
+  --color-fighting-hover: #622410;
+  --color-ghost: #464593;
+  --color-ghost-hover: #2c2b6f;
+  --color-ice: #6dd2f6;
+  --color-ice-hover: #53b5d7;
+  --color-psychic: #eb447c;
+  --color-psychic-hover: #ce2f64;
+  --color-water: #2583e1;
+  --color-water-hover: #136ec9;
+  --color-dark: #3e2e21;
+  --color-dark-hover: #2c1f15;
+  --color-fairy: #dd8edf;
+  --color-fairy-hover: #bb72bd;
+  --color-flying: #5d74d3;
+  --color-flying-hover: #465dbb;
+  --color-ground: #d3b25b;
+  --color-ground-hover: #b59644;
+  --color-poison: #954693;
+  --color-poison-hover: #7b357a;
+  --color-steel: #8f8e9e;
+  --color-steel-hover: #7a7a84;
+  --color-bug: #a7b91f;
+  --color-bug-hover: #8b9b14;
+  --color-electric: #f9ba1b;
+  --color-electric-hover: #dea513;
+  --color-fire: #eb420e;
+  --color-fire-hover: #c93203;
+  --color-grass: #77c436;
+  --color-grass-hover: #61a726;
+  --color-normal: #afa395;
+  --color-normal-hover: #91887e;
+  --color-rock: #9b873e;
+  --color-rock-hover: #84722e;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.pokemon-entry-width {
+  width: calc((100% - ((var(--spacing) * 4) * 4)) / 5);
+}

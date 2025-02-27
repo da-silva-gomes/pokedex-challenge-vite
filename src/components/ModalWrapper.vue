@@ -1,14 +1,22 @@
 <script lang='ts'>
 import axios from 'axios';
+import { defineComponent } from "vue";
+
 
 const POKEMON_DETAILS_API_URL = `https://pokeapi.co/api/v2/pokemon/`;
 const POKEMON_FLAVOR_API_URL = `https://pokeapi.co/api/v2/pokemon-species/`;
 
-export default {
+export default defineComponent({
   name: 'ModalWrapper',
   data() {
     return {
-      details: [],
+      details: {
+        order: '',
+        types: [] as Array<{ type: { name: string } }>,
+        height: 0,
+        weight: 0,
+        abilities: [] as Array<{ ability: { name: string } }>
+      },
       flavor: null
     };
   },
@@ -56,7 +64,7 @@ export default {
       }
     },
   },
-};
+});
 </script>
 
 <template>

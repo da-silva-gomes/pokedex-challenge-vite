@@ -27,8 +27,8 @@ export default {
   },
   props: {
     type: {
-      type: String,
-      default: 'Fire',
+      type: String as () => 'dragon' | 'fighting' | 'ghost' | 'ice' | 'psychic' | 'water' | 'dark' | 'fairy' | 'flying' | 'ground' | 'poison' | 'steel' | 'bug' | 'electric' | 'fire' | 'grass' | 'normal' | 'rock', // Define the valid types
+      default: 'normal',
     },
   },
   computed: {},

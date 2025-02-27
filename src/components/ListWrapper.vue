@@ -3,6 +3,10 @@ import axios from 'axios'
 import TypesList from './TypesList.vue'
 import PokemonList from './PokemonList.vue'
 
+interface PokemonType {
+  name: 'dragon' | 'fighting' | 'ghost' | 'ice' | 'psychic' | 'water' | 'dark' | 'fairy' | 'flying' | 'ground' | 'poison' | 'steel' | 'bug' | 'electric' | 'fire' | 'grass' | 'normal' | 'rock'; // Define the valid types
+}
+
 const TYPE_API_URL = `https://pokeapi.co/api/v2/type?limit=18`;
 const POKEMONS_API_URL = `https://pokeapi.co/api/v2/type/`;
 
@@ -10,7 +14,7 @@ export default {
   name: 'ListWrapper',
   data() {
     return {
-      typesList: [],
+      typesList: [] as PokemonType[],
       pokemonsList: [],
     };
   },
@@ -27,17 +31,15 @@ export default {
     try {
       const types = await axios.get(`${TYPE_API_URL}`)
 
-      types.data.results.forEach((type) => {
-        this.typesList = [...this.typesList, type.name]
-      })
+      this.typesList = types.data.results.map((type: { name: string }) => ({ name: type.name }))
     } catch (error) {
       console.log('FETCH TYPES REQUEST - ERROR:', error)
     }
   },
   methods: {
-    async searchType(type: string) {
+    async searchType(type: PokemonType) {
       try {
-        const pokemons = await axios.get(`${POKEMONS_API_URL}${type}`);
+        const pokemons = await axios.get(`${POKEMONS_API_URL}${type.name}`);
         this.pokemonsList = pokemons.data.pokemon;
       } catch (error) {
         console.log('FETCH TYPE POKEMONS REQUEST - ERROR:', error);

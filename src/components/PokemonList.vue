@@ -4,18 +4,32 @@ import PokemonEntry from './PokemonEntry.vue'
 import SearchBar from './SearchBar.vue'
 import ModalWrapper from './ModalWrapper.vue'
 
+interface PokemonEntry {
+  pokemon: {
+    name: string,
+    url: string,
+  }
+}
+
+interface PokemonType {
+  name: string;
+  url: string;
+  types: Array<string>; // Replace 'any' with a more specific type if possible
+  number: number;
+}
+
 export default {
   name: 'PokemonList',
   data() {
     return {
-      typePokemonList: [],
+      typePokemonList: [] as PokemonType[],
       offset: 0,
       limit: 25,
-      searchResults: [],
-      selectedPokemon: [],
+      searchResults: [] as PokemonType[],
+      selectedPokemon: '',
       selectedPokemonSprite: '',
       modalOpen: false,
-      currentInput: null,
+      currentInput: '' as string,
     }
   },
   components: {
@@ -34,7 +48,7 @@ export default {
       return this.searchResults.length !== 0
     },
     inputIsEmpty() {
-      return this.currentInput === 'string' && this.currentInput.length === 0 || this.currentInput === null
+      return this.currentInput.length === 0
     },
     previousPageNotPossible() {
       return this.offset < 25
@@ -50,7 +64,7 @@ export default {
   },
   props: {
     pokemonList: {
-      type: Array,
+      type: Array as () => PokemonEntry[],
       default: null,
     },
   },
@@ -68,10 +82,9 @@ export default {
       this.typePokemonList.splice(0)
 
       if (this.pokemonListHasData) {
-        this.pokemonList.forEach(async (entry) => {
+        this.pokemonList.forEach(async (entry: PokemonEntry) => {
           try {
             const pokemonInfo = await axios.get(entry.pokemon.url)
-            console.log(pokemonInfo)
             this.typePokemonList.push({
               name: entry.pokemon.name,
               url: pokemonInfo.data.sprites.other.showdown.front_default,
@@ -94,7 +107,7 @@ export default {
         this.offset = this.offset - 25
       }
     },
-    filterPokemonsList(input) {
+    filterPokemonsList(input: string) {
       if (input) {
         const filteredPokemons = this.typePokemonList.filter((pokemon) => {
           return String(pokemon.name).includes(input.trim())
@@ -104,10 +117,10 @@ export default {
         this.currentInput = input
       } else {
         this.searchResults = []
-        this.currentInput = null
+        this.currentInput = ''
       }
     },
-    openModal(pokemon) {
+    openModal(pokemon: PokemonType) {
       this.selectedPokemon = pokemon.name
       this.selectedPokemonSprite = pokemon.url
       this.modalOpen = true

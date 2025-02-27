@@ -37,3 +37,10 @@ npm run build
 ```sh
 npm run lint
 ```
+
+
+## Preview
+
+```
+https://da-silva-gomes.github.io/blackshield-code-challenge-vite/
+```

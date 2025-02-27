@@ -1,6 +1,6 @@
 # blackshield-code-challenge-vite
 
-This template should help get you started developing with Vue 3 in Vite.
+Project that uses a template with Vue 3 in Vite.
 
 ## Recommended IDE Setup
 

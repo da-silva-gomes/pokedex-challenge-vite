@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: 'https://da-silva-gomes.github.io/blackshield-code-challenge-vite/',
   plugins: [
     vue(),
     vueDevTools(),

@@ -135,10 +135,10 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="flex flex-col items-center">
     <SearchBar class='mb-8' v-if='pokemonListHasData' :pokemon-list='pokemonList'
       @input-detected='filterPokemonsList' />
-    <div class='flex flex-row flex-wrap gap-4 mb-5'>
+    <div class='flex flex-row flex-wrap justify-center md:justify-between gap-4 mb-5'>
       <button
         class='flex flex-col justify-between w-[15.6rem] h-80 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700'
         v-for='pokemon in searchResultsHasData || !inputIsEmpty

@@ -50,7 +50,7 @@ export default {
 </script>
 
 <template>
-  <div class='px-16 py-4'>
+  <div class='px-16 py-4 max-w-screen-xl mx-auto'>
     <TypesList :types='typesList' @type-selected='searchType' />
     <PokemonList :pokemon-list='pokemonsList' />
   </div>

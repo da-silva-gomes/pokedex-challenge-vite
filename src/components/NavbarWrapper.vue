@@ -15,7 +15,8 @@ export default {
   <div class='bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600'>
     <div class='max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-16 py-4'>
       <LogoWrapper />
-      <a href='#' class='flex items-center space-x-3 rtl:space-x-reverse'>
+      <a href='https://github.com/da-silva-gomes/blackshield-code-challenge-vite/' target="_blank"
+        class='flex items-center space-x-3 rtl:space-x-reverse'>
         <Github />
       </a>
     </div>

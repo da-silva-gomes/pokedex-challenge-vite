@@ -76,30 +76,44 @@ export default defineComponent({
         <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700">
           <div class='flex flex-col justify-between p-4 md:p-5 space-y-4'>
             <div class="flex flex-row items-center">
-              <p class='font-normal text-gray-700 dark:text-gray-400 mr-3'>#{{ details.order }}</p>
-              <h5 class='text-2xl font-bold tracking-tight text-gray-900 dark:text-white capitalize'>{{ pokemon }}
-              </h5>
+              <div class="flex flex-row items-center">
+                <p class='font-normal text-gray-700 dark:text-gray-400 mr-3'>#{{ details.order }}</p>
+                <h5 class='text-2xl font-bold tracking-tight text-gray-900 dark:text-white capitalize'>{{ pokemon }}
+                </h5>
+              </div>
+              <button type="button"
+                class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                @click='$emit("modal-close")'>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
             </div>
             <div class="flex flex-row">
-              <img class='h-70 p-5 mt-10 mr-10 rounded-t-lg' :src='sprite' alt='' />
-              <dl
-                class="flex flex-col max-w-md text-gray-900 divide-y divide-gray-200 dark:text-white dark:divide-gray-700">
-                <div class='flex flex-col mt-3'>
+              <div class="flex flex-row justify-center w-3/5">
+                <img class='h-70 p-5 mt-10 mr-10 rounded-t-lg object-contain' :src='sprite' alt='' />
+              </div>
+              <dl class="flex flex-col w-2/5 max-w-md text-gray-900 dark:text-white">
+                <div class='flex flex-col mb-3'>
                   <dt class="mb-2 text-gray-500 md:text-lg dark:text-gray-400">Types</dt>
                   <dd v-for="entry in details.types" :key="entry.type.name" :class="`bg-${entry.type.name}`"
-                    class='text-white text-xs font-semibold px-2.5 py-0.5 rounded-sm capitalize last:mt-1'>{{
+                    class='flex justify-center w-20 text-white text-xs font-semibold px-2.5 py-0.5 rounded-sm capitalize last:mt-1'>
+                    {{
                       entry.type.name
                     }}</dd>
                 </div>
                 <div class="flex flex-col my-3">
                   <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Height</dt>
-                  <dd class="text-lg font-semibold">{{ (details.height / 10).toFixed(1) }}</dd>
+                  <dd class="text-lg font-semibold">{{ (details.height / 10).toFixed(1) }} m</dd>
                 </div>
                 <div class="flex flex-col my-3">
                   <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Weight</dt>
-                  <dd class="text-lg font-semibold">{{ (details.weight / 10).toFixed(1) }}</dd>
+                  <dd class="text-lg font-semibold">{{ (details.weight / 10).toFixed(1) }} kg</dd>
                 </div>
-                <div class="flex flex-col justify-center mb-3">
+                <div class="flex flex-col justify-center mt-3">
                   <dd class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Abilities</dd>
                   <dd v-for="entry in details.abilities" :key="entry.ability.name"
                     class="text-lg font-semibold capitalize">{{
@@ -108,7 +122,8 @@ export default defineComponent({
               </dl>
             </div>
             <div>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ flavor }}</p>
+              <span class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">Pokedex entry</span>
+              <p class="text-black dark:text-white text-lg font-semibold">{{ flavor }}</p>
             </div>
           </div>
         </div>

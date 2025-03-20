@@ -1,4 +1,4 @@
-# blackshield-code-challenge-vite
+# pokedex-challenge-vite
 
 Project that uses a template with Vue 3 in Vite.
 

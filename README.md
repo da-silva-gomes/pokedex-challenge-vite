@@ -41,6 +41,4 @@ npm run lint
 
 ## Preview
 
-```
 [https://da-silva-gomes.github.io/blackshield-code-challenge-vite/](https://da-silva-gomes.github.io/pokedex-challenge-vite/)
-```
